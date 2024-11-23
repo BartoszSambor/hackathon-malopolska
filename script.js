@@ -40,16 +40,18 @@ document.querySelectorAll('.feature-card').forEach(card => {
 });
 
 // Pricing toggle animation
-document.querySelectorAll('.pricing-card').forEach(card => {
-    card.addEventListener('mouseover', function() {
-        this.style.transform = 'translateY(-10px)';
+if (document.querySelector('.pricing-cards')) {
+    document.querySelectorAll('.pricing-card').forEach(card => {
+        card.addEventListener('mouseover', function() {
+            this.style.transform = 'translateY(-10px)';
+        });
+        
+        card.addEventListener('mouseout', function() {
+            if (!this.classList.contains('premium')) {
+                this.style.transform = 'none';
+            } else {
+                this.style.transform = 'scale(1.05)';
+            }
+        });
     });
-    
-    card.addEventListener('mouseout', function() {
-        if (!this.classList.contains('premium')) {
-            this.style.transform = 'none';
-        } else {
-            this.style.transform = 'scale(1.05)';
-        }
-    });
-}); 
+} 
